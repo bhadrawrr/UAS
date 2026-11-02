@@ -51,12 +51,17 @@
 
         .brand {
             align-items: center;
+            background: transparent;
+            border: 0;
             color: var(--ink);
+            cursor: pointer;
             display: inline-flex;
             font-size: 1.45rem;
             font-weight: 800;
             gap: 10px;
             letter-spacing: .12em;
+            padding: 0;
+            text-align: left;
         }
 
         .brand-mark {
@@ -182,7 +187,7 @@
             transform: translateY(-2px);
         }
 
-        .button:focus-visible, .text-button:focus-visible, .spot-card:focus-visible,
+        .button:focus-visible, .brand:focus-visible, .text-button:focus-visible, .option-card:focus-visible, .spot-card:focus-visible,
         .close-button:focus-visible {
             outline: 3px solid var(--accent);
             outline-offset: 3px;
@@ -195,12 +200,45 @@
 
         .hero-photo {
             border-radius: 46% 46% 24px 24px;
+            filter: sepia(.82) saturate(1.65) brightness(.68) contrast(1.08);
             height: 100%;
             object-fit: cover;
+            object-position: center 38%;
             position: absolute;
             right: 4%;
             top: 0;
             width: 78%;
+        }
+
+        .hero-art::after {
+            background: linear-gradient(145deg, rgba(24, 18, 14, .16), rgba(171, 112, 43, .36));
+            border-radius: 46% 46% 24px 24px;
+            content: "";
+            height: 100%;
+            pointer-events: none;
+            position: absolute;
+            right: 4%;
+            top: 0;
+            width: 78%;
+        }
+
+        .hero-credit {
+            background: rgba(31, 23, 18, .72);
+            border-radius: 4px;
+            bottom: 8px;
+            color: rgba(255, 250, 242, .9);
+            font-size: .65rem;
+            line-height: 1.4;
+            padding: 4px 7px;
+            position: absolute;
+            right: 6%;
+            text-decoration: none;
+            z-index: 1;
+        }
+
+        .hero-credit:hover {
+            color: white;
+            text-decoration: underline;
         }
 
         .section-heading {
@@ -230,14 +268,43 @@
         }
 
         .option-card {
-            background: linear-gradient(155deg, #fffdf8 0%, #f8efe3 100%);
+            background: #78604e;
             border: 1px solid var(--line);
             border-radius: 22px;
             cursor: pointer;
+            isolation: isolate;
             min-height: 210px;
-            padding: 28px;
+            overflow: hidden;
+            padding: 0;
+            position: relative;
             text-align: left;
             transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+        }
+
+        .option-card::after {
+            background: linear-gradient(180deg, rgba(48, 34, 25, .08) 8%, rgba(48, 34, 25, .82) 100%);
+            content: "";
+            inset: 0;
+            position: absolute;
+            z-index: 1;
+        }
+
+        .option-card-image {
+            height: 100%;
+            inset: 0;
+            object-fit: cover;
+            position: absolute;
+            transition: transform .3s ease;
+            width: 100%;
+            z-index: 0;
+        }
+
+        .option-card-copy {
+            bottom: 24px;
+            left: 20px;
+            position: absolute;
+            right: 20px;
+            z-index: 2;
         }
 
         .option-card:hover {
@@ -246,7 +313,12 @@
             transform: translateY(-4px);
         }
 
+        .option-card:hover .option-card-image {
+            transform: scale(1.04);
+        }
+
         .option-card h3 {
+            color: var(--paper);
             font-family: Georgia, "Times New Roman", serif;
             font-size: 1.55rem;
             font-weight: 500;
@@ -254,15 +326,16 @@
         }
 
         .option-card p {
-            color: var(--muted);
-            font-size: .9rem;
+            color: rgba(255, 250, 242, .86);
+            font-size: .82rem;
             margin-bottom: 0;
         }
 
         .page-toolbar {
             align-items: center;
             display: flex;
-            justify-content: space-between;
+            gap: 24px;
+            justify-content: flex-start;
             margin: 34px 0 14px;
         }
 
@@ -492,6 +565,7 @@
             .hero-copy { max-width: 560px; }
             .hero-art { height: 280px; }
             .hero-photo { right: 5%; width: 76%; }
+            .hero-art::after { right: 5%; width: 76%; }
             .option-grid { grid-template-columns: repeat(2, 1fr); }
             .spot-card { flex-basis: calc((100% - 22px) / 2); }
             .spot-card img { height: 190px; }
@@ -514,10 +588,10 @@
 </head>
 <body>
     <header class="site-header">
-        <div class="brand">
+        <button class="brand" type="button" data-page="home" aria-label="Kembali ke beranda">
             <span class="brand-mark">Z</span>
             <span>ZPOT<span class="brand-tagline">clazz gap nap guide</span></span>
-        </div>
+        </button>
         <p class="header-note">Spot nyaman di Vokasi UI</p>
     </header>
 
@@ -530,7 +604,8 @@
                     <button class="button" id="check-spots" type="button">Check a spot! <span aria-hidden="true">→</span></button>
                 </div>
                 <div class="hero-art">
-                    <img class="hero-photo" src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="">
+                    <img class="hero-photo" src="https://upload.wikimedia.org/wikipedia/commons/2/23/Taman_makara_FEUI.jpg" alt="Tugu Makara Universitas Indonesia dengan tone emas hangat">
+                    <a class="hero-credit" href="https://commons.wikimedia.org/wiki/File:Taman_makara_FEUI.jpg" target="_blank" rel="noopener noreferrer">Foto: BlackKnight / CC BY 3.0</a>
                 </div>
             </div>
         </section>
@@ -548,8 +623,8 @@
 
         <section class="page" id="catalog-page" aria-labelledby="catalog-title">
             <div class="page-toolbar">
-                <button class="text-button" id="back-to-options" type="button">Pick a place</button>
                 <button class="text-button" type="button" data-page="home">Home</button>
+                <button class="text-button" id="back-to-options" type="button">Pick a place</button>
             </div>
             <h2 class="catalog-title" id="catalog-title"></h2>
             <p class="catalog-intro" id="catalog-intro"></p>
@@ -580,8 +655,9 @@
         const options = [
             {
                 id: "gedung-vb",
-                name: "Gedung VB",
-                description: "Tempat-tempat tidur di daerah Gedung VB",
+                name: "Gedung Vokasi B",
+                description: "Tempat-tempat tidur di daerah Gedung Vokasi B",
+                image: "https://lh3.googleusercontent.com/d/16D9Tb8wb1xqUjoB3IEqHDbQVOXovxS_S",
                 spots: [
                     {
                         name: "Kursi Lorong Fisioterapi",
@@ -628,9 +704,10 @@
                 ]
             },
             {
-                id: "gedung-vc",
-                name: "Gedung VC dan Auditorium Vokasi UI",
-                description: "Tempat-tempat tidur di daerah Gedung VC dan Auditorium Vokasi UI",
+                id: "gedung-vokasi-c",
+                name: "Gedung Vokasi C",
+                description: "Tempat-tempat tidur di daerah Gedung Vokasi C",
+                image: "https://lh3.googleusercontent.com/d/16cUq7awNGJDJ0H0_wrohw4F5VuquDsg2",
                 spots: [
                     {
                         name: "Kursi Lobby Gedung VC",
@@ -650,7 +727,7 @@
                         name: "Mushola Auditorium",
                         info: "info spot",
                         description: "deskripsi spot",
-                        location: "Auditorium Vokasi UI",
+                        location: "Gedung Vokasi C",
                         image: "https://lh3.googleusercontent.com/d/1noyGuJSu-eZp8A4dKXA2jzbHQGzAgCyn"
                     },
                     {
@@ -680,6 +757,7 @@
                 id: "spot-outdoor",
                 name: "Outdoor",
                 description: "Tempat-tempat tidur di daerah Outdoor Vokasi UI",
+                image: "https://lh3.googleusercontent.com/d/1i65iOUlu0gkTTaarVFFUlECczcoIbG1s",
                 spots: [
                     {
                         name: "Rumah Hobbit",
@@ -748,7 +826,24 @@
                 const card = document.createElement("button");
                 card.className = "option-card";
                 card.type = "button";
-                card.innerHTML = "<h3>" + option.name + "</h3><p>" + option.description + "</p>";
+
+                const image = document.createElement("img");
+                image.className = "option-card-image";
+                image.src = option.image;
+                image.alt = "";
+                image.loading = "lazy";
+
+                const copy = document.createElement("div");
+                copy.className = "option-card-copy";
+
+                const title = document.createElement("h3");
+                title.textContent = option.name;
+
+                const description = document.createElement("p");
+                description.textContent = option.description;
+
+                copy.append(title, description);
+                card.append(image, copy);
                 card.addEventListener("click", function () {
                     showCatalog(option);
                 });
