@@ -100,7 +100,6 @@
             display: block;
         }
 
-        /* Hero Section dengan Nuansa Hangat Cozy */
         .hero {
             align-items: center;
             background: linear-gradient(128deg, #f2e6d8 0%, #e8d5c1 48%, #f4e9dc 100%);
@@ -202,26 +201,6 @@
             right: 4%;
             top: 0;
             width: 78%;
-        }
-
-        .hero-badge {
-            align-items: center;
-            background: linear-gradient(145deg, #fffaf2 0%, #f4e9da 100%);
-            border-radius: 50%;
-            box-shadow: var(--shadow);
-            color: var(--accent);
-            display: flex;
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: 1.12rem;
-            height: 104px;
-            justify-content: center;
-            left: 0;
-            line-height: 1.25;
-            position: absolute;
-            text-align: center;
-            top: 46px;
-            transform: rotate(-8deg);
-            width: 104px;
         }
 
         .section-heading {
@@ -507,107 +486,29 @@
         }
 
         @media (max-width: 760px) {
-            .site-header {
-                padding: 18px 20px;
-            }
-
-            main {
-                padding: 8px 20px 52px;
-            }
-
-            .hero {
-                gap: 18px;
-                grid-template-columns: 1fr;
-                padding: 42px 28px 24px;
-            }
-
-            .hero-copy {
-                max-width: 560px;
-            }
-
-            .hero-art {
-                height: 280px;
-            }
-
-            .hero-photo {
-                right: 5%;
-                width: 76%;
-            }
-
-            .hero-badge {
-                height: 82px;
-                width: 82px;
-            }
-
-            .option-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .spot-card {
-                flex-basis: calc((100% - 22px) / 2);
-            }
-
-            .spot-card img {
-                height: 190px;
-            }
+            .site-header { padding: 18px 20px; }
+            main { padding: 8px 20px 52px; }
+            .hero { gap: 18px; grid-template-columns: 1fr; padding: 42px 28px 24px; }
+            .hero-copy { max-width: 560px; }
+            .hero-art { height: 280px; }
+            .hero-photo { right: 5%; width: 76%; }
+            .option-grid { grid-template-columns: repeat(2, 1fr); }
+            .spot-card { flex-basis: calc((100% - 22px) / 2); }
+            .spot-card img { height: 190px; }
         }
 
         @media (max-width: 520px) {
-            .header-note {
-                font-size: .76rem;
-            }
-
-            .hero {
-                border-radius: 22px;
-                padding: 34px 22px 18px;
-            }
-
-            .hero-art {
-                height: 230px;
-            }
-
-            .section-heading {
-                margin-top: 42px;
-            }
-
-            .option-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .spot-card {
-                flex-basis: 82%;
-            }
-
-            .option-card {
-                min-height: 170px;
-            }
-
-            .option-number {
-                margin-bottom: 14px;
-            }
-
-            .spot-card img {
-                height: 230px;
-            }
-
-            .modal {
-                padding: 14px;
-            }
-
-            .modal-photo {
-                height: 230px;
-            }
-
-            .modal-copy {
-                padding: 22px;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                scroll-behavior: auto !important;
-                transition-duration: .01ms !important;
-            }
+            .header-note { font-size: .76rem; }
+            .hero { border-radius: 22px; padding: 34px 22px 18px; }
+            .hero-art { height: 230px; }
+            .section-heading { margin-top: 42px; }
+            .option-grid { grid-template-columns: 1fr; }
+            .spot-card { flex-basis: 82%; }
+            .option-card { min-height: 170px; }
+            .spot-card img { height: 230px; }
+            .modal { padding: 14px; }
+            .modal-photo { height: 230px; }
+            .modal-copy { padding: 22px; }
         }
     </style>
 </head>
@@ -678,16 +579,16 @@
     <script>
         const options = [
             {
-                id: "option-1",
-                name: "Option 1",
-                description: "Tempat-tempat tidur di daerah ....",
+                id: "gedung-vb",
+                name: "Gedung VB",
+                description: "Tempat-tempat tidur di daerah Gedung VB",
                 spots: [
                     {
-                        name: "nama spot",
-                        info: "info spot",
+                        name: "Kursi Lorong Fisioterapi",
+                        info: "info",
                         description: "deskripsi spot",
-                        location: "lokasi spot",
-                        image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=85"
+                        location: "Gedung VB lantai 1",
+                        image: "https://lh3.googleusercontent.com/d/16D9Tb8wb1xqUjoB3IEqHDbQVOXovxS_S"
                     },
                     {
                         name: "nama spot",
@@ -727,30 +628,30 @@
                 ]
             },
             {
-                id: "option-2",
-                name: "Option 2",
-                description: "Tempat-tempat tidur di daerah ....",
+                id: "gedung-vc",
+                name: "Gedung VC dan Auditorium Vokasi UI",
+                description: "Tempat-tempat tidur di daerah Gedung VC dan Auditorium Vokasi UI",
                 spots: [
                     {
-                        name: "nama spot",
+                        name: "Kursi Lobby Gedung VC",
                         info: "info spot",
                         description: "deskripsi spot",
-                        location: "lokasi spot",
-                        image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=85"
+                        location: "Gedung VC lantai 1",
+                        image: "https://lh3.googleusercontent.com/d/16cUq7awNGJDJ0H0_wrohw4F5VuquDsg2"
                     },
                     {
-                        name: "nama spot",
+                        name: "Waiting Spot Lantai 3",
                         info: "info spot",
                         description: "deskripsi spot",
-                        location: "lokasi spot",
-                        image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1000&q=85"
+                        location: "Gedung VC lantai 3",
+                        image: "https://lh3.googleusercontent.com/d/1dQaDA7IlzNNqoHdeUe_J5PNf2YTEoRfB"
                     },
                     {
-                        name: "nama spot",
+                        name: "Mushola Auditorium",
                         info: "info spot",
                         description: "deskripsi spot",
-                        location: "lokasi spot",
-                        image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1000&q=85"
+                        location: "Auditorium Vokasi UI",
+                        image: "https://lh3.googleusercontent.com/d/1noyGuJSu-eZp8A4dKXA2jzbHQGzAgCyn"
                     },
                     {
                         name: "nama spot",
@@ -776,23 +677,23 @@
                 ]
             },
             {
-                id: "option-3",
-                name: "Option 3",
-                description: "Tempat-tempat tidur di daerah ....",
+                id: "spot-outdoor",
+                name: "Outdoor",
+                description: "Tempat-tempat tidur di daerah Outdoor Vokasi UI",
                 spots: [
                     {
-                        name: "nama spot",
+                        name: "Rumah Hobbit",
                         info: "info spot",
                         description: "deskripsi spot",
                         location: "lokasi spot",
-                        image: "https://images.unsplash.com/photo-1449247709967-d4461a6a6103?auto=format&fit=crop&w=1000&q=85"
+                        image: "https://lh3.googleusercontent.com/d/1i65iOUlu0gkTTaarVFFUlECczcoIbG1s"
                     },
                     {
-                        name: "nama spot",
+                        name: "Kursi Panjang Kuning",
                         info: "info spot",
                         description: "deskripsi spot",
                         location: "lokasi spot",
-                        image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=85"
+                        image: "https://lh3.googleusercontent.com/d/1EcCU7j_fBORUYaJr7uYiCthhINv_yUwb"
                     },
                     {
                         name: "nama spot",
@@ -843,14 +744,11 @@
 
         function renderOptions() {
             optionGrid.innerHTML = "";
-
             options.forEach(function (option) {
                 const card = document.createElement("button");
                 card.className = "option-card";
                 card.type = "button";
-                card.innerHTML =
-                    "<h3>" + option.name + "</h3>" +
-                    "<p>" + option.description + "</p>";
+                card.innerHTML = "<h3>" + option.name + "</h3><p>" + option.description + "</p>";
                 card.addEventListener("click", function () {
                     showCatalog(option);
                 });
